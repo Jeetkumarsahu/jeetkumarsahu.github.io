@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JanSetu Civic Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-shell">
+      <nav class="topbar" aria-label="Primary">
+        <a class="brand" href="#area" aria-label="JanSetu home">
+          <span class="brand-mark">JS</span>
+          <span>
+            <strong>JanSetu</strong>
+            <small>Civic Tracker</small>
+          </span>
+        </a>
+
+        <div class="location-picker" aria-label="Location filters">
+          <label>
+            <span>State</span>
+            <select id="stateSelect">
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Rajasthan">Rajasthan</option>
+            </select>
+          </label>
+          <label>
+            <span>Area</span>
+            <select id="areaSelect">
+              <option value="My Area">My Area</option>
+              <option value="District">District</option>
+              <option value="State">State</option>
+              <option value="National">National</option>
+            </select>
+          </label>
+        </div>
+      </nav>
+
+      <section class="overview" aria-labelledby="dashboardTitle">
+        <div>
+          <p class="eyebrow">Neutral public issue tracker</p>
+          <h1 id="dashboardTitle">Verified problems, visible progress.</h1>
+          <p class="lede">
+            Track local issues, public evidence, promise progress, and solved cases without party promotion.
+          </p>
+        </div>
+        <img class="map-art" src="assets/issue-map.svg" alt="Issue map visualization">
+      </section>
+    </header>
+
+    <main>
+      <section class="metrics" aria-label="Platform snapshot">
+        <article>
+          <span id="verifiedCount">0</span>
+          <p>Verified issues</p>
+        </article>
+        <article>
+          <span id="solvedCount">0</span>
+          <p>Solved records</p>
+        </article>
+        <article>
+          <span id="pendingCount">0</span>
+          <p>Pending issues</p>
+        </article>
+        <article>
+          <span id="watchCount">0</span>
+          <p>Accountability watch</p>
+        </article>
+      </section>
+
+      <div class="tabs" role="tablist" aria-label="Sections">
+        <button class="tab-button active" data-tab="area" role="tab" aria-selected="true">My Area</button>
+        <button class="tab-button" data-tab="national" role="tab" aria-selected="false">National</button>
+        <button class="tab-button" data-tab="solved" role="tab" aria-selected="false">Solved</button>
+        <button class="tab-button" data-tab="leaders" role="tab" aria-selected="false">Leaders</button>
+        <button class="tab-button" data-tab="report" role="tab" aria-selected="false">Report</button>
+      </div>
+
+      <section class="content-grid">
+        <div class="panel feed-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow" id="feedEyebrow">My Area</p>
+              <h2 id="feedTitle">Public problem feed</h2>
+            </div>
+            <select id="categoryFilter" aria-label="Category filter">
+              <option value="All">All categories</option>
+              <option value="Road">Road</option>
+              <option value="Water">Water</option>
+              <option value="Health">Health</option>
+              <option value="Education">Education</option>
+              <option value="Pollution">Pollution</option>
+              <option value="Jobs">Jobs</option>
+            </select>
+          </div>
+          <div id="feed" class="feed" aria-live="polite"></div>
+        </div>
+
+        <aside class="panel side-panel" aria-label="Trust and verification">
+          <h2>Trust rules</h2>
+          <ul class="rule-list">
+            <li>Public opinion never becomes the full rating.</li>
+            <li>Every issue needs location, evidence, and duplicate checks.</li>
+            <li>Solved records show process and proof, not party promotion.</li>
+            <li>Low score labels stay neutral: Accountability Watch.</li>
+          </ul>
+
+          <div class="score-box">
+            <p class="eyebrow">Suggested weight</p>
+            <h3>80% data, 20% public feedback</h3>
+            <p>Keep the platform issue-first so it does not become a campaign machine.</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <template id="issueCardTemplate">
+      <article class="issue-card">
+        <div class="evidence-frame">
+          <span class="category-chip"></span>
+          <strong class="issue-visual-title"></strong>
+        </div>
+        <div class="issue-body">
+          <div class="issue-meta">
+            <span class="status-pill"></span>
+            <span class="location-text"></span>
+          </div>
+          <h3></h3>
+          <p class="summary"></p>
+          <div class="issue-stats"></div>
+          <div class="actions">
+            <button class="support-button" type="button">Support</button>
+            <button class="verify-button" type="button">Verify</button>
+            <button class="share-button" type="button">Share</button>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <template id="leaderTemplate">
+      <article class="leader-card">
+        <div class="leader-head">
+          <div>
+            <p class="eyebrow role"></p>
+            <h3></h3>
+            <span class="area"></span>
+          </div>
+          <strong class="overall-score"></strong>
+        </div>
+        <div class="score-bars"></div>
+        <p class="leader-note"></p>
+      </article>
+    </template>
+
+    <footer>
+      <p>Demo data is fictional. JanSetu shows civic records and does not recommend who to vote for.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
